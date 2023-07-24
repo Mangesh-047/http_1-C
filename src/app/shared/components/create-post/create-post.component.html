@@ -1,0 +1,34 @@
+<!-- <p *ngIf="!postId">create-post works!</p>
+<p *ngIf="postId">edit-post works!</p> -->
+
+
+<div class="row">
+    <div class="col-sm-6 offset-sm-3">
+        <form [formGroup]="postForm" (ngSubmit)="onPostFormSubmit()">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+
+                    <h3 *ngIf="!postId">Create Post</h3>
+                    <h3 *ngIf="postId">Update Post</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" formControlName="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">content</label>
+
+                        <textarea class="form-control" rows="4" id="content" formControlName="content"></textarea>
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-warning" *ngIf="postId" type="button" (click)="onUpdate()">Update
+                            Post</button>
+                        <button class="btn btn-success" *ngIf="!postId" type="submit"
+                            [disabled]="postForm.invalid">Create Post</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
